@@ -24,7 +24,7 @@ export function NumberPad() {
             disabled={isComplete}
             className={`
               numpad-btn relative flex flex-col items-center justify-center
-              rounded-xl py-2.5 font-bold text-lg transition-all duration-150
+              rounded-xl py-2.5 font-bold text-xl transition-all duration-150
               ${isComplete
                 ? 'bg-cream-dark/30 text-brown-light/30 cursor-default'
                 : 'bg-cream text-brown-dark hover:bg-terracotta/10 active:bg-terracotta/20 shadow-[var(--shadow-warm)]'

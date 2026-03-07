@@ -36,7 +36,7 @@ function CellInner({ index }: CellProps) {
       onClick={() => selectCell(index)}
       className={`
         w-full h-full flex items-center justify-center relative
-        text-lg font-semibold transition-all duration-150 select-none
+        text-2xl font-semibold transition-all duration-150 select-none
         outline-none cursor-pointer
         ${isSelected
           ? 'bg-terracotta/20 ring-2 ring-terracotta shadow-[var(--shadow-glow-terracotta)]'
