@@ -53,11 +53,15 @@ function CellInner({ index }: CellProps) {
       {cell.value ? (
         <span
           className={`
-            ${cell.isGiven ? 'text-brown-dark font-bold' : ''}
-            ${cell.isHinted ? 'text-sage-dark' : ''}
-            ${!cell.isGiven && !cell.isHinted ? 'text-[#5A3A2E] font-bold' : ''}
-            ${isError ? 'text-error' : ''}
-            ${isConflict && !cell.isGiven ? 'text-error' : ''}
+            font-bold
+            ${(isError || (isConflict && !cell.isGiven))
+              ? 'text-error'
+              : cell.isGiven
+                ? 'text-brown-dark'
+                : cell.isHinted
+                  ? 'text-sage-dark'
+                  : 'text-brown-dark'
+            }
             ${!cell.isGiven ? 'cell-enter' : ''}
           `}
           key={cell.value}
