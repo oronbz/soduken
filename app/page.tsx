@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useProfileStore } from '@/stores/profileStore';
 import { useStatsStore } from '@/stores/statsStore';
+import { useHydrated } from '@/hooks/useHydrated';
 import { Greeting } from '@/components/home/Greeting';
 import { StreakBadge } from '@/components/home/StreakBadge';
 import { ContinueCard } from '@/components/home/ContinueCard';
@@ -15,18 +16,19 @@ export default function HomePage() {
   const isOnboarded = useProfileStore(s => s.profile.isOnboarded);
   const updateStreak = useStatsStore(s => s.updateStreak);
   const router = useRouter();
+  const hydrated = useHydrated();
 
   useEffect(() => {
-    if (!isOnboarded) {
+    if (hydrated && !isOnboarded) {
       router.replace('/onboarding');
     }
-  }, [isOnboarded, router]);
+  }, [hydrated, isOnboarded, router]);
 
   useEffect(() => {
     updateStreak();
   }, [updateStreak]);
 
-  if (!isOnboarded) return null;
+  if (!hydrated || !isOnboarded) return null;
 
   return (
     <div className="px-5 pt-8 pb-28">

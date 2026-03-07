@@ -69,6 +69,14 @@ export const useProfileStore = create<ProfileStore>()(
     }),
     {
       name: 'soduken-profile',
+      merge: (persisted, current) => {
+        const p = persisted as Partial<ProfileStore>;
+        return {
+          ...current,
+          profile: { ...defaultProfile, ...p.profile },
+          achievements: p.achievements ?? current.achievements,
+        };
+      },
     }
   )
 );

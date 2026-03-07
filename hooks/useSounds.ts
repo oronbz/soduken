@@ -19,7 +19,7 @@ export function useSounds() {
   // React to game state changes
   useEffect(() => {
     const unsub = useGameStore.subscribe((state, prev) => {
-      if (!useProfileStore.getState().profile.soundEnabled) return;
+      if (useProfileStore.getState().profile.soundEnabled === false) return;
 
       const game = state.game;
       const prevGame = prev.game;
