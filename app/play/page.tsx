@@ -39,7 +39,7 @@ function PlayContent() {
   }
 
   return (
-    <div className="relative flex flex-col h-dvh px-4 py-3 safe-bottom">
+    <div className="relative flex flex-col h-dvh px-4 py-3 safe-bottom overflow-hidden">
       <GameHeader />
       <div className="flex-1 flex flex-col items-center justify-center gap-3 min-h-0">
         <div className="relative w-full">

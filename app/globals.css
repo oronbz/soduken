@@ -31,17 +31,11 @@
   --shadow-glow-sage: 0 0 20px rgba(143, 175, 138, 0.25);
 }
 
-html {
-  overflow: hidden;
-  height: 100%;
-}
-
-body {
+html, body {
   background-color: #FBF7EE;
   color: #4A3428;
   font-family: var(--font-nunito), system-ui, sans-serif;
-  min-height: 100%;
-  overflow: auto;
+  min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
