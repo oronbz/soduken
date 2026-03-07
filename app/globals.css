@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F5ECD7;
+  --color-cream-light: #FBF7EE;
+  --color-cream-dark: #E8DCC4;
+  --color-terracotta: #C4714A;
+  --color-terracotta-light: #D4906E;
+  --color-terracotta-dark: #A85A38;
+  --color-sage: #8FAF8A;
+  --color-sage-light: #A8C4A3;
+  --color-sage-dark: #6E8E69;
+  --color-brown: #6B4C3B;
+  --color-brown-light: #8A6B5A;
+  --color-brown-dark: #4A3428;
+  --color-error: #D4614A;
+  --color-cream-50: #FEFCF7;
+  --color-cream-100: #FBF7EE;
+  --color-cream-200: #F5ECD7;
+  --color-cream-300: #E8DCC4;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-nunito);
+}
+
+:root {
+  --shadow-warm: 0 2px 8px rgba(107, 76, 59, 0.08);
+  --shadow-warm-md: 0 4px 16px rgba(107, 76, 59, 0.12);
+  --shadow-warm-lg: 0 8px 32px rgba(107, 76, 59, 0.16);
+  --shadow-glow-terracotta: 0 0 20px rgba(196, 113, 74, 0.2);
+  --shadow-glow-sage: 0 0 20px rgba(143, 175, 138, 0.25);
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  background-color: #FBF7EE;
+  color: #4A3428;
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  min-height: 100%;
+  overflow: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle linen texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4714A' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Warm scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8DCC4;
+  border-radius: 3px;
+}
+
+/* Safe area padding for PWA */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Number pad button active state */
+.numpad-btn:active {
+  transform: scale(0.93);
+}
+
+/* Board cell transitions */
+.cell-enter {
+  animation: cellPop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cellPop {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes cellShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-3px); }
+  40%, 80% { transform: translateX(3px); }
+}
+
+.cell-error {
+  animation: cellShake 0.3s ease-in-out;
+}
+
+/* Confetti keyframes */
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}

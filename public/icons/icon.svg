@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="108" fill="#F5ECD7"/>
+  <rect x="40" y="40" width="432" height="432" rx="80" fill="#FBF7EE"/>
+
+  <!-- 3x3 grid lines -->
+  <rect x="80" y="80" width="352" height="352" rx="16" stroke="#6B4C3B" stroke-width="6" fill="none"/>
+
+  <!-- Thick grid lines -->
+  <line x1="197" y1="80" x2="197" y2="432" stroke="#6B4C3B" stroke-width="4"/>
+  <line x1="315" y1="80" x2="315" y2="432" stroke="#6B4C3B" stroke-width="4"/>
+  <line x1="80" y1="197" x2="432" y2="197" stroke="#6B4C3B" stroke-width="4"/>
+  <line x1="80" y1="315" x2="432" y2="315" stroke="#6B4C3B" stroke-width="4"/>
+
+  <!-- Thin grid lines -->
+  <line x1="139" y1="80" x2="139" y2="432" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
+  <line x1="256" y1="80" x2="256" y2="432" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
+  <line x1="373" y1="80" x2="373" y2="432" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
+  <line x1="80" y1="139" x2="432" y2="139" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
+  <line x1="80" y1="256" x2="432" y2="256" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
+  <line x1="80" y1="373" x2="432" y2="373" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Numbers -->
+  <text x="256" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="80" fill="#C4714A">S</text>
+  <text x="139" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">9</text>
+  <text x="373" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">7</text>
+  <text x="139" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">3</text>
+  <text x="373" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#8FAF8A" opacity="0.8">5</text>
+</svg>
