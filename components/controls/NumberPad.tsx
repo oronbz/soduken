@@ -24,7 +24,7 @@ export function NumberPad() {
             onClick={() => !isComplete && enterNumber(n)}
             disabled={isComplete}
             className={`
-              numpad-btn aspect-square rounded-2xl font-display font-bold text-3xl
+              numpad-btn aspect-square rounded-2xl font-bold text-3xl
               flex items-center justify-center select-none
               transition-all duration-150 outline-none
               ${isComplete
