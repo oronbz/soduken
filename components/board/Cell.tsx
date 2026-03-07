@@ -55,7 +55,7 @@ function CellInner({ index }: CellProps) {
           className={`
             ${cell.isGiven ? 'text-brown-dark font-bold' : ''}
             ${cell.isHinted ? 'text-sage-dark' : ''}
-            ${!cell.isGiven && !cell.isHinted ? 'text-[#7B3A1E] font-bold' : ''}
+            ${!cell.isGiven && !cell.isHinted ? 'text-[#5A3A2E] font-bold' : ''}
             ${isError ? 'text-error' : ''}
             ${isConflict && !cell.isGiven ? 'text-error' : ''}
             ${!cell.isGiven ? 'cell-enter' : ''}
