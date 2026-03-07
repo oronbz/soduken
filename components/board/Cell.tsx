@@ -60,7 +60,7 @@ function CellInner({ index }: CellProps) {
                 ? 'text-brown-dark'
                 : cell.isHinted
                   ? 'text-sage-dark'
-                  : 'text-[#7A4A35]'
+                  : 'text-[#2B4A68]'
             }
             ${!cell.isGiven ? 'cell-enter' : ''}
           `}
