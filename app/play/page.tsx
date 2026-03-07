@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useGameStore } from '@/stores/gameStore';
 import { useTimer } from '@/hooks/useTimer';
 import { useKeyboard } from '@/hooks/useKeyboard';
+import { useSounds } from '@/hooks/useSounds';
 import { Board } from '@/components/board/Board';
 import { NumberPad } from '@/components/controls/NumberPad';
 import { ActionBar } from '@/components/controls/ActionBar';
@@ -20,6 +21,7 @@ function PlayContent() {
 
   useTimer();
   useKeyboard();
+  useSounds();
 
   useEffect(() => {
     if (!game) {

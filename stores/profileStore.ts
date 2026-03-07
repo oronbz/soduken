@@ -12,6 +12,7 @@ interface ProfileStore {
   completeOnboarding: () => void;
   addXP: (amount: number) => void;
   unlockAchievements: (ids: AchievementId[]) => void;
+  toggleSound: () => void;
 }
 
 const defaultProfile: UserProfile = {
@@ -21,6 +22,7 @@ const defaultProfile: UserProfile = {
   currentLevel: 1,
   currentTitle: 'Sudoku Seedling',
   isOnboarded: false,
+  soundEnabled: true,
 };
 
 export const useProfileStore = create<ProfileStore>()(
@@ -49,6 +51,11 @@ export const useProfileStore = create<ProfileStore>()(
             currentTitle: level.title,
           },
         });
+      },
+
+      toggleSound: () => {
+        const { profile } = get();
+        set({ profile: { ...profile, soundEnabled: !profile.soundEnabled } });
       },
 
       unlockAchievements: (ids) => {

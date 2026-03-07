@@ -6,6 +6,7 @@ import { BottomNav } from '@/components/ui/BottomNav';
 export default function SettingsPage() {
   const profile = useProfileStore(s => s.profile);
   const setName = useProfileStore(s => s.setName);
+  const toggleSound = useProfileStore(s => s.toggleSound);
   const [editingName, setEditingName] = useState(false);
   const [nameInput, setNameInput] = useState(profile.name);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
@@ -55,6 +56,32 @@ export default function SettingsPage() {
                 Edit
               </button>
             )}
+          </div>
+        </div>
+
+        {/* Sound */}
+        <div className="bg-cream rounded-2xl p-4 shadow-[var(--shadow-warm)]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs text-brown-light">Sound Effects</p>
+              <p className="font-semibold text-brown-dark">
+                {profile.soundEnabled !== false ? 'On' : 'Off'}
+              </p>
+            </div>
+            <button
+              onClick={toggleSound}
+              className={`
+                relative w-12 h-7 rounded-full transition-colors duration-200
+                ${profile.soundEnabled !== false ? 'bg-sage' : 'bg-cream-dark'}
+              `}
+            >
+              <div
+                className={`
+                  absolute top-0.5 w-6 h-6 rounded-full bg-cream-light shadow transition-transform duration-200
+                  ${profile.soundEnabled !== false ? 'translate-x-[1.375rem]' : 'translate-x-0.5'}
+                `}
+              />
+            </button>
           </div>
         </div>
 

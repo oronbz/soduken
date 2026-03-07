@@ -16,6 +16,7 @@ export interface UserProfile {
   currentLevel: number;
   currentTitle: LevelTitle;
   isOnboarded: boolean;
+  soundEnabled: boolean;
 }
 
 export type AchievementId =
