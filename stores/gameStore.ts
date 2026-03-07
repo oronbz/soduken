@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import { v4 as uuid } from 'uuid';
 import type { GameState, Difficulty, CellValue, Cell } from '@/types/game';
 import { generatePuzzle } from '@/lib/sudoku/generator';
-import { findConflicts, isBoardComplete } from '@/lib/sudoku/validator';
+import { findConflicts, isBoardComplete, isSameRow, isSameCol, isSameBox } from '@/lib/sudoku/validator';
 import { getHintIndex, getHintValue } from '@/lib/sudoku/hints';
 
 interface GameStore {
@@ -100,6 +100,18 @@ export const useGameStore = create<GameStore>()(
           newBoard[idx] = { ...cell, value: newValue, pencilMarks: [] };
           move.newValue = newValue;
           move.newPencilMarks = [];
+
+          // Auto-clear pencil marks from related cells
+          if (newValue !== null) {
+            for (let i = 0; i < 81; i++) {
+              if (i === idx) continue;
+              const c = newBoard[i];
+              if (c.pencilMarks.includes(newValue) &&
+                  (isSameRow(idx, i) || isSameCol(idx, i) || isSameBox(idx, i))) {
+                newBoard[i] = { ...c, pencilMarks: c.pencilMarks.filter(m => m !== newValue) };
+              }
+            }
+          }
         }
 
         const newConflicts = findConflicts(newBoard);

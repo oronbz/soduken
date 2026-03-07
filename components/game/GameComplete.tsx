@@ -7,12 +7,13 @@ import { calculateXP } from '@/lib/gamification/xp';
 import { checkAchievements } from '@/lib/gamification/achievements';
 import { formatTime } from '@/lib/time';
 import { getXPProgress } from '@/lib/gamification/levels';
+import { Share2 } from 'lucide-react';
 import Link from 'next/link';
 
 function Confetti() {
   const colors = ['#C4714A', '#8FAF8A', '#6B4C3B', '#D4906E', '#A8C4A3', '#F5ECD7'];
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-40">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-60">
       {Array.from({ length: 40 }, (_, i) => (
         <div
           key={i}
@@ -30,6 +31,13 @@ function Confetti() {
   );
 }
 
+const difficultyLabels: Record<string, string> = {
+  easy: 'Easy',
+  medium: 'Medium',
+  hard: 'Hard',
+  expert: 'Expert',
+};
+
 export function GameComplete() {
   const game = useGameStore(s => s.game);
   const clearGame = useGameStore(s => s.clearGame);
@@ -42,9 +50,13 @@ export function GameComplete() {
   const [processed, setProcessed] = useState(false);
   const [xpResult, setXpResult] = useState<ReturnType<typeof calculateXP> | null>(null);
   const [newAchievements, setNewAchievements] = useState<string[]>([]);
+  const [levelUp, setLevelUp] = useState<{ level: number; title: string } | null>(null);
+  const [shareState, setShareState] = useState<'idle' | 'copied'>('idle');
 
   useEffect(() => {
     if (!game?.isComplete || processed) return;
+
+    const previousLevel = useProfileStore.getState().profile.currentLevel;
 
     const xp = calculateXP({
       difficulty: game.difficulty,
@@ -57,8 +69,12 @@ export function GameComplete() {
     recordGameComplete(game);
     addXP(xp.total);
 
-    const updatedStats = useStatsStore.getState().stats;
     const updatedProfile = useProfileStore.getState().profile;
+    if (updatedProfile.currentLevel > previousLevel) {
+      setLevelUp({ level: updatedProfile.currentLevel, title: updatedProfile.currentTitle });
+    }
+
+    const updatedStats = useStatsStore.getState().stats;
     const unlocked = checkAchievements(game, updatedStats, updatedProfile.currentLevel, achievements);
 
     if (unlocked.length > 0) {
@@ -75,6 +91,31 @@ export function GameComplete() {
 
   const progress = getXPProgress(profile.totalXP);
 
+  const handleShare = async () => {
+    const isPerfect = game.errorsCount === 0 && game.hintsUsed === 0;
+    const date = game.dailyDate
+      ? new Date(game.dailyDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      : '';
+    const lines = [
+      `Soduken Daily — ${date}`,
+      `${difficultyLabels[game.difficulty]} | ${formatTime(game.elapsedSeconds)}`,
+      `Errors: ${game.errorsCount} | Hints: ${game.hintsUsed}`,
+      isPerfect ? '🟩🟩🟩 Perfect!' : game.errorsCount === 0 ? '🟩🟩 No errors!' : '🟩 Solved!',
+    ].join('\n');
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ text: lines });
+      } else {
+        await navigator.clipboard.writeText(lines);
+        setShareState('copied');
+        setTimeout(() => setShareState('idle'), 2000);
+      }
+    } catch {
+      // User cancelled share dialog
+    }
+  };
+
   return (
     <>
       <Confetti />
@@ -85,6 +126,15 @@ export function GameComplete() {
           <p className="text-brown-light text-sm mb-4">
             You solved it in {formatTime(game.elapsedSeconds)}
           </p>
+
+          {levelUp && (
+            <div className="bg-terracotta/10 rounded-xl p-3 mb-4 animate-[cellPop_0.4s_ease-out]">
+              <p className="text-xs font-semibold text-terracotta mb-0.5">Level Up!</p>
+              <p className="font-display text-lg font-bold text-brown-dark">
+                Lv. {levelUp.level} — {levelUp.title}
+              </p>
+            </div>
+          )}
 
           {xpResult && (
             <div className="bg-cream rounded-xl p-4 mb-4 text-left">
@@ -132,6 +182,16 @@ export function GameComplete() {
             >
               Home
             </Link>
+            {game.isDaily && (
+              <button
+                onClick={handleShare}
+                className="py-3 px-4 rounded-xl bg-cream text-brown font-semibold
+                           hover:bg-cream-dark/50 transition-colors text-sm flex items-center justify-center gap-1.5"
+              >
+                <Share2 size={14} />
+                {shareState === 'copied' ? 'Copied!' : 'Share'}
+              </button>
+            )}
             <Link
               href="/"
               onClick={() => clearGame()}
