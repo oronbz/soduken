@@ -3,6 +3,7 @@ import { useGameStore } from '@/stores/gameStore';
 
 export function NumberPad() {
   const enterNumber = useGameStore(s => s.enterNumber);
+  const erase = useGameStore(s => s.erase);
   const game = useGameStore(s => s.game);
 
   const counts: Record<number, number> = {};
@@ -23,7 +24,7 @@ export function NumberPad() {
             onClick={() => !isComplete && enterNumber(n)}
             disabled={isComplete}
             className={`
-              numpad-btn relative flex flex-col items-center justify-center
+              numpad-btn flex items-center justify-center
               rounded-xl py-3 font-bold text-3xl transition-all duration-150
               ${isComplete
                 ? 'bg-cream-dark/30 text-brown-light/30 cursor-default'
@@ -31,13 +32,17 @@ export function NumberPad() {
               }
             `}
           >
-            <span>{n}</span>
-            {!isComplete && (
-              <span className="text-[0.6rem] text-brown-light/50 mt-0.5">{9 - counts[n]}</span>
-            )}
+            {n}
           </button>
         );
       })}
+      <button
+        onClick={erase}
+        className="numpad-btn flex items-center justify-center rounded-xl py-3 text-2xl transition-all duration-150
+                   bg-cream text-brown-light hover:bg-terracotta/10 active:bg-terracotta/20 shadow-[var(--shadow-warm)]"
+      >
+        ⌫
+      </button>
     </div>
   );
 }

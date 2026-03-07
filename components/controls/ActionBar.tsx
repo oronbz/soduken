@@ -26,7 +26,6 @@ function ActionButton({ onClick, label, icon, isActive }: {
 
 export function ActionBar() {
   const undo = useGameStore(s => s.undo);
-  const erase = useGameStore(s => s.erase);
   const togglePencilMode = useGameStore(s => s.togglePencilMode);
   const useHint = useGameStore(s => s.useHint);
   const isPencilMode = useGameStore(s => s.game?.isPencilMode ?? false);
@@ -34,7 +33,6 @@ export function ActionBar() {
   return (
     <div className="flex items-center justify-center gap-2 w-full max-w-[min(100vw-2rem,420px)] mx-auto">
       <ActionButton onClick={undo} label="Undo" icon="↩" />
-      <ActionButton onClick={erase} label="Erase" icon="⌫" />
       <ActionButton onClick={togglePencilMode} label="Notes" icon="✏️" isActive={isPencilMode} />
       <ActionButton onClick={useHint} label="Hint" icon="💡" />
     </div>
