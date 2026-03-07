@@ -40,10 +40,10 @@ function CellInner({ index }: CellProps) {
         outline-none cursor-pointer
         ${isSelected
           ? 'bg-terracotta/20 ring-2 ring-terracotta shadow-[var(--shadow-glow-terracotta)]'
-          : isHighlighted
-            ? 'bg-cream-dark/50'
-            : isSameNumber
-              ? 'bg-sage/15'
+          : isSameNumber
+            ? 'bg-terracotta/12 ring-1 ring-terracotta/30'
+            : isHighlighted
+              ? 'bg-cream-dark/50'
               : 'bg-cream-light hover:bg-cream-dark/30'
         }
         ${isError ? 'cell-error' : ''}
