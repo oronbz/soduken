@@ -29,7 +29,7 @@ export default function HomePage() {
   if (!isOnboarded) return null;
 
   return (
-    <div className="px-5 pt-8 pb-24">
+    <div className="px-5 pt-8 pb-28">
       <div className="flex items-start justify-between">
         <Greeting />
         <StreakBadge />
