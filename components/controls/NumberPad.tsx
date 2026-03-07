@@ -1,5 +1,6 @@
 'use client';
 import { useGameStore } from '@/stores/gameStore';
+import { Delete } from 'lucide-react';
 
 export function NumberPad() {
   const enterNumber = useGameStore(s => s.enterNumber);
@@ -46,7 +47,7 @@ export function NumberPad() {
       <button
         onClick={erase}
         className="
-          numpad-btn aspect-square rounded-2xl text-2xl
+          numpad-btn aspect-square rounded-2xl
           flex items-center justify-center select-none
           transition-all duration-150 outline-none
           bg-gradient-to-b from-cream-dark/60 to-cream-dark/80
@@ -58,7 +59,7 @@ export function NumberPad() {
           active:translate-y-[1px]
         "
       >
-        ⌫
+        <Delete size={22} />
       </button>
     </div>
   );

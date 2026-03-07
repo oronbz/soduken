@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { UserProfile, Achievement, AchievementId } from '@/types/profile';
+import type { UserProfile, Achievement, AchievementId, ThemePreference } from '@/types/profile';
 import { getLevelForXP } from '@/lib/gamification/levels';
 import { createInitialAchievements } from '@/lib/gamification/achievements';
 
@@ -13,6 +13,7 @@ interface ProfileStore {
   addXP: (amount: number) => void;
   unlockAchievements: (ids: AchievementId[]) => void;
   toggleSound: () => void;
+  setTheme: (theme: ThemePreference) => void;
 }
 
 const defaultProfile: UserProfile = {
@@ -23,6 +24,7 @@ const defaultProfile: UserProfile = {
   currentTitle: 'Sudoku Seedling',
   isOnboarded: false,
   soundEnabled: true,
+  theme: 'system',
 };
 
 export const useProfileStore = create<ProfileStore>()(
@@ -56,6 +58,11 @@ export const useProfileStore = create<ProfileStore>()(
       toggleSound: () => {
         const { profile } = get();
         set({ profile: { ...profile, soundEnabled: !profile.soundEnabled } });
+      },
+
+      setTheme: (theme) => {
+        const { profile } = get();
+        set({ profile: { ...profile, theme } });
       },
 
       unlockAchievements: (ids) => {

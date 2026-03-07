@@ -1,11 +1,13 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Home, BarChart3, Settings } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-const tabs = [
-  { href: '/', label: 'Home', icon: '🏠' },
-  { href: '/stats', label: 'Stats', icon: '📊' },
-  { href: '/settings', label: 'Settings', icon: '⚙️' },
+const tabs: { href: string; label: string; icon: ReactNode }[] = [
+  { href: '/', label: 'Home', icon: <Home size={20} /> },
+  { href: '/stats', label: 'Stats', icon: <BarChart3 size={20} /> },
+  { href: '/settings', label: 'Settings', icon: <Settings size={20} /> },
 ];
 
 export function BottomNav() {
@@ -25,7 +27,7 @@ export function BottomNav() {
                 ${isActive ? 'text-terracotta' : 'text-brown-light hover:text-brown'}
               `}
             >
-              <span className="text-lg">{tab.icon}</span>
+              {tab.icon}
               <span className="text-[0.6rem] font-semibold">{tab.label}</span>
             </Link>
           );

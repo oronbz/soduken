@@ -1,10 +1,12 @@
 'use client';
 import { useGameStore } from '@/stores/gameStore';
+import { Undo2, PenLine, Lightbulb } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 function ActionButton({ onClick, label, icon, isActive }: {
   onClick: () => void;
   label: string;
-  icon: string;
+  icon: ReactNode;
   isActive?: boolean;
 }) {
   return (
@@ -32,9 +34,9 @@ export function ActionBar() {
 
   return (
     <div className="flex items-center justify-center gap-2 w-full max-w-[min(100vw-2rem,420px)] mx-auto">
-      <ActionButton onClick={undo} label="Undo" icon="↩" />
-      <ActionButton onClick={togglePencilMode} label="Notes" icon="✏️" isActive={isPencilMode} />
-      <ActionButton onClick={useHint} label="Hint" icon="💡" />
+      <ActionButton onClick={undo} label="Undo" icon={<Undo2 size={20} />} />
+      <ActionButton onClick={togglePencilMode} label="Notes" icon={<PenLine size={20} />} isActive={isPencilMode} />
+      <ActionButton onClick={useHint} label="Hint" icon={<Lightbulb size={20} />} />
     </div>
   );
 }

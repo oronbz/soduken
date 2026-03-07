@@ -7,6 +7,8 @@ export default function SettingsPage() {
   const profile = useProfileStore(s => s.profile);
   const setName = useProfileStore(s => s.setName);
   const toggleSound = useProfileStore(s => s.toggleSound);
+  const setTheme = useProfileStore(s => s.setTheme);
+  const theme = profile.theme ?? 'system';
   const [editingName, setEditingName] = useState(false);
   const [nameInput, setNameInput] = useState(profile.name);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
@@ -56,6 +58,33 @@ export default function SettingsPage() {
                 Edit
               </button>
             )}
+          </div>
+        </div>
+
+        {/* Theme */}
+        <div className="bg-cream rounded-2xl p-4 shadow-[var(--shadow-warm)]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs text-brown-light">Theme</p>
+              <p className="font-semibold text-brown-dark">
+                {theme === 'system' ? 'System' : theme === 'dark' ? 'Dark' : 'Light'}
+              </p>
+            </div>
+            <div className="flex gap-1 bg-cream-dark/30 rounded-xl p-1">
+              {(['system', 'light', 'dark'] as const).map(t => (
+                <button
+                  key={t}
+                  onClick={() => setTheme(t)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    theme === t
+                      ? 'bg-cream-light text-brown-dark shadow-sm'
+                      : 'text-brown-light hover:text-brown'
+                  }`}
+                >
+                  {t === 'system' ? 'Auto' : t === 'light' ? 'Light' : 'Dark'}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

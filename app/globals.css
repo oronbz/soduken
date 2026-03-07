@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@theme inline {
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
   --color-cream: #F5ECD7;
   --color-cream-light: #FBF7EE;
   --color-cream-dark: #E8DCC4;
@@ -31,9 +33,43 @@
   --shadow-glow-sage: 0 0 20px rgba(143, 175, 138, 0.25);
 }
 
+.dark {
+  --color-cream: #14202E;
+  --color-cream-light: #0C1521;
+  --color-cream-dark: #253545;
+  --color-cream-50: #080F18;
+  --color-cream-100: #0C1521;
+  --color-cream-200: #14202E;
+  --color-cream-300: #253545;
+
+  --color-brown: #7A8D9E;
+  --color-brown-light: #4E6172;
+  --color-brown-dark: #D5DCE3;
+
+  --color-terracotta: #D88B68;
+  --color-terracotta-light: #E4A585;
+  --color-terracotta-dark: #CB8050;
+
+  --color-sage: #9FC09A;
+  --color-sage-light: #B5D1B0;
+  --color-sage-dark: #82AA7D;
+
+  --color-error: #EF5350;
+
+  --shadow-warm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-warm-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-warm-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow-terracotta: 0 0 20px rgba(216, 139, 104, 0.12);
+  --shadow-glow-sage: 0 0 20px rgba(159, 192, 154, 0.12);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
 html, body {
-  background-color: #FBF7EE;
-  color: #4A3428;
+  background-color: var(--color-cream-light);
+  color: var(--color-brown-dark);
   font-family: var(--font-nunito), system-ui, sans-serif;
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
@@ -48,6 +84,11 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4714A' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.3s;
+}
+
+.dark body::before {
+  opacity: 0;
 }
 
 /* Warm scrollbar */
@@ -60,7 +101,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E8DCC4;
+  background: var(--color-cream-dark);
   border-radius: 3px;
 }
 

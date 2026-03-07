@@ -1,7 +1,10 @@
 'use client';
 import { useGameStore } from '@/stores/gameStore';
+import { useProfileStore } from '@/stores/profileStore';
 import { formatTime } from '@/lib/time';
 import Link from 'next/link';
+import { ChevronLeft, Pause, Play, Sun, Moon, Monitor } from 'lucide-react';
+import type { ThemePreference } from '@/types/profile';
 
 const difficultyLabels = {
   easy: 'Easy',
@@ -24,6 +27,16 @@ export function GameHeader() {
   const errorsCount = useGameStore(s => s.game?.errorsCount ?? 0);
   const hintsUsed = useGameStore(s => s.game?.hintsUsed ?? 0);
   const togglePause = useGameStore(s => s.togglePause);
+  const theme = useProfileStore(s => s.profile.theme ?? 'system');
+  const setTheme = useProfileStore(s => s.setTheme);
+
+  const cycleTheme = () => {
+    const order: ThemePreference[] = ['system', 'light', 'dark'];
+    const next = order[(order.indexOf(theme) + 1) % order.length];
+    setTheme(next);
+  };
+
+  const ThemeIcon = theme === 'dark' ? Moon : theme === 'light' ? Sun : Monitor;
 
   return (
     <div className="flex items-center justify-between px-1 py-2">
@@ -32,7 +45,7 @@ export function GameHeader() {
           href="/"
           className="w-8 h-8 flex items-center justify-center rounded-full bg-cream hover:bg-cream-dark/50 transition-colors text-brown"
         >
-          ←
+          <ChevronLeft size={18} />
         </Link>
         <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${difficultyColors[difficulty]}`}>
           {difficultyLabels[difficulty]}
@@ -58,9 +71,16 @@ export function GameHeader() {
         </span>
         <button
           onClick={togglePause}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-cream hover:bg-cream-dark/50 transition-colors text-brown text-sm"
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-cream hover:bg-cream-dark/50 transition-colors text-brown"
         >
-          {isPaused ? '▶' : '⏸'}
+          {isPaused ? <Play size={16} /> : <Pause size={16} />}
+        </button>
+        <button
+          onClick={cycleTheme}
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-cream hover:bg-cream-dark/50 transition-colors text-brown"
+          aria-label={`Theme: ${theme}`}
+        >
+          <ThemeIcon size={16} />
         </button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Nunito, Fraunces } from 'next/font/google';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 
 const nunito = Nunito({
@@ -45,11 +46,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=JSON.parse(localStorage.getItem('soduken-profile')||'{}');var t=(s.state&&s.state.profile&&s.state.profile.theme)||'system';var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme:dark)').matches);if(d)document.documentElement.classList.add('dark')}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className={`${nunito.variable} ${fraunces.variable} font-body antialiased`}>
-        <div className="relative z-10 mx-auto max-w-lg min-h-dvh">
-          {children}
-        </div>
+        <ThemeProvider>
+          <div className="relative z-10 mx-auto max-w-lg min-h-dvh">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

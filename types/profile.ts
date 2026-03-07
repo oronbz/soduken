@@ -9,6 +9,8 @@ export type LevelTitle =
   | 'Puzzle Sage'
   | 'Sudoku Grandmaster';
 
+export type ThemePreference = 'system' | 'light' | 'dark';
+
 export interface UserProfile {
   name: string;
   createdAt: number;
@@ -17,6 +19,7 @@ export interface UserProfile {
   currentTitle: LevelTitle;
   isOnboarded: boolean;
   soundEnabled: boolean;
+  theme: ThemePreference;
 }
 
 export type AchievementId =

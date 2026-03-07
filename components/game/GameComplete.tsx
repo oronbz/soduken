@@ -78,7 +78,7 @@ export function GameComplete() {
   return (
     <>
       <Confetti />
-      <div className="absolute inset-0 z-50 flex items-center justify-center bg-brown-dark/30 backdrop-blur-sm">
+      <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
         <div className="bg-cream-light rounded-2xl p-6 mx-4 max-w-sm w-full shadow-[var(--shadow-warm-lg)] text-center">
           <div className="text-4xl mb-2">🎉</div>
           <h2 className="font-display text-2xl text-brown-dark mb-1">Wonderful!</h2>
