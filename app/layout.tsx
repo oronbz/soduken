@@ -17,6 +17,10 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: 'Soduken',
   description: 'A cozy Sudoku puzzle game',
+  icons: {
+    icon: '/icons/icon.svg',
+    apple: '/icons/apple-touch-icon.png',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',

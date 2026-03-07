@@ -20,9 +20,9 @@
   <line x1="80" y1="373" x2="432" y2="373" stroke="#6B4C3B" stroke-width="1.5" opacity="0.3"/>
 
   <!-- Numbers -->
-  <text x="256" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="80" fill="#C4714A">S</text>
-  <text x="139" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">9</text>
-  <text x="373" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">7</text>
-  <text x="139" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">3</text>
-  <text x="373" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#8FAF8A" opacity="0.8">5</text>
+  <text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="system-ui, sans-serif" font-weight="800" font-size="80" fill="#C4714A">S</text>
+  <text x="139" y="139" text-anchor="middle" dominant-baseline="central" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">9</text>
+  <text x="373" y="139" text-anchor="middle" dominant-baseline="central" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">7</text>
+  <text x="139" y="373" text-anchor="middle" dominant-baseline="central" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#6B4C3B" opacity="0.6">3</text>
+  <text x="373" y="373" text-anchor="middle" dominant-baseline="central" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#8FAF8A" opacity="0.8">5</text>
 </svg>
