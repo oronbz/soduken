@@ -72,8 +72,11 @@ body::before {
 }
 
 /* Number pad button active state */
-.numpad-btn:active {
-  transform: scale(0.93);
+.numpad-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+.numpad-btn:active:not(:disabled) {
+  transform: scale(0.95) translateY(1px);
 }
 
 /* Board cell transitions */
