@@ -39,7 +39,7 @@ function CellInner({ index }: CellProps) {
         text-3xl font-semibold transition-all duration-150 select-none
         outline-none cursor-pointer
         ${isSelected
-          ? 'bg-terracotta/20 ring-2 ring-terracotta shadow-[var(--shadow-glow-terracotta)]'
+          ? 'bg-terracotta/15 ring-1 ring-inset ring-terracotta/60'
           : isSameNumber
             ? 'bg-terracotta/12 ring-1 ring-terracotta/30'
             : isHighlighted
