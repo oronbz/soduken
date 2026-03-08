@@ -36,10 +36,10 @@ export default function DailyPage() {
   }
 
   return (
-    <div className="relative flex flex-col h-dvh px-4 py-3 safe-bottom overflow-hidden">
+    <div className="relative flex flex-col h-dvh px-4 pt-3 safe-bottom overflow-hidden">
       <GameHeader />
-      <div className="flex-1 flex flex-col items-center justify-center gap-4 min-h-0">
-        <div className="text-center mb-1">
+      <div className="flex-1 flex flex-col items-center justify-center min-h-0">
+        <div className="text-center mb-2">
           <span className="text-xs font-semibold text-terracotta bg-terracotta/10 px-3 py-1 rounded-full">
             Daily Challenge
           </span>
@@ -48,6 +48,8 @@ export default function DailyPage() {
           <Board />
           <PauseOverlay />
         </div>
+      </div>
+      <div className="flex flex-col items-center gap-2 pb-2 pt-3 shrink-0">
         <ActionBar />
         <NumberPad />
       </div>

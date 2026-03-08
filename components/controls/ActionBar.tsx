@@ -13,7 +13,7 @@ function ActionButton({ onClick, label, icon, isActive }: {
     <button
       onClick={onClick}
       className={`
-        flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all
+        flex flex-col items-center gap-1 px-5 py-3 rounded-xl transition-all min-w-[4rem]
         ${isActive
           ? 'bg-terracotta/15 text-terracotta-dark'
           : 'text-brown-light hover:bg-cream-dark/40'
