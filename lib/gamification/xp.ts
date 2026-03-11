@@ -2,6 +2,7 @@ import type { Difficulty } from '@/types/game';
 
 const BASE_XP: Record<Difficulty, number> = {
   easy: 50,
+  mild: 75,
   medium: 100,
   hard: 200,
   expert: 400,
@@ -9,6 +10,7 @@ const BASE_XP: Record<Difficulty, number> = {
 
 const PAR_TIMES: Record<Difficulty, number> = {
   easy: 300,
+  mild: 450,
   medium: 600,
   hard: 1200,
   expert: 2400,

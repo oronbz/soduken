@@ -5,6 +5,7 @@ import { formatTime } from '@/lib/time';
 
 const difficultyLabels = {
   easy: 'Easy',
+  mild: 'Mild',
   medium: 'Medium',
   hard: 'Hard',
   expert: 'Expert',

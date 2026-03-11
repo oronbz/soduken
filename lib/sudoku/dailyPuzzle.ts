@@ -9,7 +9,7 @@ interface DailyPuzzleData {
   date: string;
 }
 
-const DAILY_DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard', 'expert'];
+const DAILY_DIFFICULTIES: Difficulty[] = ['easy', 'mild', 'medium', 'hard', 'expert'];
 
 function getStorageKey(date: string): string {
   return `soduken-daily-${date}`;

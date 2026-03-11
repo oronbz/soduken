@@ -6,6 +6,7 @@ import type { Difficulty } from '@/types/game';
 
 const difficulties: { value: Difficulty; label: string; desc: string; color: string }[] = [
   { value: 'easy', label: 'Easy', desc: 'Relax & unwind', color: 'bg-sage/15 text-sage-dark hover:bg-sage/25 border-sage/30' },
+  { value: 'mild', label: 'Mild', desc: 'A small step up', color: 'bg-sage/10 text-sage hover:bg-sage/18 border-sage/20' },
   { value: 'medium', label: 'Medium', desc: 'A gentle challenge', color: 'bg-terracotta/8 text-terracotta hover:bg-terracotta/15 border-terracotta/20' },
   { value: 'hard', label: 'Hard', desc: 'Test your logic', color: 'bg-terracotta/15 text-terracotta-dark hover:bg-terracotta/25 border-terracotta/30' },
   { value: 'expert', label: 'Expert', desc: 'For the brave', color: 'bg-brown/10 text-brown-dark hover:bg-brown/20 border-brown/20' },
@@ -46,13 +47,14 @@ export function NewGameCard() {
             </button>
           </div>
           <div className="grid grid-cols-2 gap-2">
-            {difficulties.map(d => (
+            {difficulties.map((d, i) => (
               <button
                 key={d.value}
                 onClick={() => handleStart(d.value)}
                 className={`
                   py-3 px-3 rounded-xl text-left transition-colors border
                   ${d.color}
+                  ${i === difficulties.length - 1 && difficulties.length % 2 !== 0 ? 'col-span-2' : ''}
                 `}
               >
                 <p className="font-semibold text-sm">{d.label}</p>
