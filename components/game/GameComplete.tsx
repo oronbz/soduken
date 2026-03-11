@@ -33,6 +33,7 @@ function Confetti() {
 
 const difficultyLabels: Record<string, string> = {
   easy: 'Easy',
+  mild: 'Mild',
   medium: 'Medium',
   hard: 'Hard',
   expert: 'Expert',

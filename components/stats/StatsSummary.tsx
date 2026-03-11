@@ -5,6 +5,7 @@ import type { Difficulty } from '@/types/game';
 
 const difficultyLabels: Record<Difficulty, string> = {
   easy: 'Easy',
+  mild: 'Mild',
   medium: 'Medium',
   hard: 'Hard',
   expert: 'Expert',

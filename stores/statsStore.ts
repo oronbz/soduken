@@ -21,6 +21,7 @@ const defaultStats: Statistics = {
   },
   byDifficulty: {
     easy: emptyDifficultyStats(),
+    mild: emptyDifficultyStats(),
     medium: emptyDifficultyStats(),
     hard: emptyDifficultyStats(),
     expert: emptyDifficultyStats(),
@@ -145,6 +146,17 @@ export const useStatsStore = create<StatsStore>()(
     }),
     {
       name: 'soduken-stats',
+      version: 1,
+      migrate: (persistedState: unknown, version: number) => {
+        const state = persistedState as Record<string, unknown>;
+        if (version === 0) {
+          const stats = state.stats as Statistics | undefined;
+          if (stats && !stats.byDifficulty.mild) {
+            stats.byDifficulty.mild = emptyDifficultyStats() as Statistics['byDifficulty']['mild'];
+          }
+        }
+        return state;
+      },
     }
   )
 );

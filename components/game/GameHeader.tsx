@@ -8,6 +8,7 @@ import type { ThemePreference } from '@/types/profile';
 
 const difficultyLabels = {
   easy: 'Easy',
+  mild: 'Mild',
   medium: 'Medium',
   hard: 'Hard',
   expert: 'Expert',
@@ -15,6 +16,7 @@ const difficultyLabels = {
 
 const difficultyColors = {
   easy: 'bg-sage/20 text-sage-dark',
+  mild: 'bg-sage/12 text-sage',
   medium: 'bg-terracotta/10 text-terracotta',
   hard: 'bg-terracotta/20 text-terracotta-dark',
   expert: 'bg-brown/15 text-brown-dark',

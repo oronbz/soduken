@@ -27,6 +27,7 @@ export type AchievementId =
   | 'no_hints'
   | 'no_errors'
   | 'speed_demon_easy'
+  | 'speed_demon_mild'
   | 'speed_demon_medium'
   | 'speed_demon_hard'
   | 'week_streak'
