@@ -46,10 +46,12 @@ function PlayContent() {
           <Board />
           <PauseOverlay />
         </div>
+        <div className="w-full mt-3">
+          <NumberPad />
+        </div>
       </div>
-      <div className="flex flex-col items-center gap-2 pb-2 pt-3 shrink-0">
+      <div className="flex flex-col items-center pb-2 pt-3 shrink-0">
         <ActionBar />
-        <NumberPad />
       </div>
       <GameComplete />
     </div>
